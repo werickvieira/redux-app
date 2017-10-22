@@ -1,0 +1,20 @@
+$bluegrey: #2B3A42;
+
+pre {
+  padding: 20px;
+  background: $bluegrey;
+  color: #dedede;
+  text-shadow: 0 1px 1px rgba(#000, .5);
+}
+
+body{
+	background:lightblue;
+}
+
+
+.g-main{
+	background-image: url('../img/vader.jpg');
+	background-size:cover;
+	height: 100vh;
+	background-position: 50%;
+}
