@@ -21,8 +21,7 @@ const config = {
 				test: /\.js$/,
 				exclude: [/node_modules/],
 				use: [{
-					loader: 'babel-loader'//,
-					//options: { presets: ['env'] }
+					loader: 'babel-loader'
 				}]
 			},    
 			{
@@ -39,22 +38,22 @@ const config = {
 						loader: 'file-loader',
 						options: {
 							name: '[path][name].[ext]?[hash]',
-							//publicPath: '/',
 							context: path.resolve(__dirname, "app/src/")
-						}//,
-						//loader: 'image-webpack-loader'
+						}
 					},
 				]
 			},
 			{
-				test: /\.pug$/,
-				use: 'pug-loader',
-			},
-			{
-			  test: /\.(html)$/,
-			  use: {
-			    loader: 'html-loader'
-			  }
+			  test: /\.(pug)$/,
+			  use:[
+		        'html-loader', {
+		          loader: 'pug-html-loader',
+		            options: {
+		            	data: {},
+		            	pretty: true
+		            }
+	          	}
+			  ]
 			},
 		]
 	},
