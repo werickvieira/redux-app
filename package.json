@@ -1,12 +1,13 @@
 {
-  "name": "testando-redux",
+  "name": "redux-app",
   "version": "1.0.0",
   "description": "Testando redux",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production  webpack -p",
-    "eslint": "eslint src/js --no-cache"
+    "eslint": "eslint src/* --no-cache",
+    "test": "jest --no-cache"
   },
   "keywords": [
     "webpack"
@@ -16,19 +17,41 @@
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.5",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.28.0",
+    "jest": "^22.4.2",
     "node-sass": "^4.5.3",
-    "pug": "^2.0.0-rc.4",
     "pug-html-loader": "^1.1.5",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.4.5"
+  },
+  "jest": {
+    "verbose": true,
+    "moduleDirectories": [
+      "node_modules",
+      "src/"
+    ]
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
   }
 }
