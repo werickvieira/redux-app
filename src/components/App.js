@@ -8,14 +8,19 @@ class App extends Component {
   //   super(props);
   // }
   componentDidMount() {
-    this.props.dispatch(fetchBegin);
+    const { dispatch } = this.props;
+    dispatch(fetchBegin);
   }
 
   render() {
+    const { items, isFetching } = this.props;
     return (
       <div>
         <h1>App</h1>
-        { !this.props.isFetching ? <h2>Loading</h2> : null }
+        { !isFetching ? <h2>Loading...</h2> : null }
+        {
+          items.map(({ id, price }) => <div key={id}>{price}</div>)
+        }
       </div>
     );
   }
@@ -24,10 +29,12 @@ class App extends Component {
 App.defaultProps = {
   dispatch: '',
   isFetching: '',
+  items: [],
 };
 
 App.propTypes = {
   dispatch: PropTypes.func,
+  items: PropTypes.arrayOf(PropTypes.object),
   isFetching: PropTypes.bool,
 };
 

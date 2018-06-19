@@ -8,24 +8,17 @@
   "extends": "airbnb",
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "no-use-before-define": [1, { "variables": true }],
-    "no-continue": [1],
     "no-param-reassign": [2, {"props": false}],
     "comma-dangle": ["error", "always-multiline", {
       "functions": "never"
-    }],
-    "function-paren-newline": ["error", "consistent"]
+    }]
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2017,
     "ecmaFeatures": {
       "jsx": true
     },
     "sourceType": "module"
   },
-  "globals": {
-  },
-  "plugins": [
-    "react"
-  ]
+  "plugins": ["react"]
 }
