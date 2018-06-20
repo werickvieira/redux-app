@@ -1,5 +1,41 @@
-.list {
-  .list__title {
-    color: red;
+.books {
+  margin: 45px auto;
+  max-width: 1280px;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  @media(min-width: 768px) {
+    justify-content: space-between; 
+  }
+  .book__item {
+    min-width: 245px;
+    flex: 0 0 320px / 1280px * 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    border: 2px solid blue;
+    margin-bottom: 20px;
+    padding: 10px;
+    @media(max-width: 767px) and (orientation: portrait) {
+      flex-basis: 100%; 
+      padding: 10px 0;
+    }
+    .book__detail {
+      display: flex;
+      .book__detail__column {
+        &--lg {
+          flex: 1;
+          margin-left: 10px;
+        }
+      }
+      .book__detail__name {
+        margin: 0;
+      }
+    }
+  }
+  .book__button {
+    width: auto;
+    display: inline-block;
+    padding: 10px;
+    background-color: transparent;
   }
 }

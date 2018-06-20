@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchBegin } from '../actions/';
 import BookList from './book/BookList';
+import './App.scss';
 
 class App extends Component {
   // constructor(props) {
@@ -18,8 +19,7 @@ class App extends Component {
     return (
       <div>
         <h1>Book Store</h1>
-        { !isFetching ? <h2>Loading...</h2> : null }
-        <BookList list={items} />
+        { !isFetching ? <h2>Loading...</h2> : <BookList books={items} /> }
       </div>
     );
   }
