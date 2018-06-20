@@ -34,10 +34,10 @@ function BookList({ books }) {
         }) => (
           <div className="book__item" id={id} key={id}>
             <div className="book__detail">
-              <div className="book__detail__column">
+              <div className="book__column">
                 <img src={thumb} alt={name} />
               </div>
-              <div className="book__detail__column book__detail__column--lg">
+              <div className="book__column book__column--lg">
                 <h1 className="book__detail__name">{name}</h1>
                 <p className="book__detail__description">{description}</p>
                 <span className="book__detail__price">{formatPrice(price)}</span>
