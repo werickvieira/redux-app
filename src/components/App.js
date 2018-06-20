@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchBegin } from '../actions/';
+import BookList from './book/BookList';
 
 class App extends Component {
   // constructor(props) {
@@ -16,11 +17,9 @@ class App extends Component {
     const { items, isFetching } = this.props;
     return (
       <div>
-        <h1>App</h1>
+        <h1>Book Store</h1>
         { !isFetching ? <h2>Loading...</h2> : null }
-        {
-          items.map(({ id, price }) => <div key={id}>{price}</div>)
-        }
+        <BookList list={items} />
       </div>
     );
   }
