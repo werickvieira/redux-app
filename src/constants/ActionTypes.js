@@ -1,2 +1,3 @@
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
+export const ADD_BOOK_CART = 'ADD_BOOK_CART';
