@@ -11,6 +11,10 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
+// store.subscribe(() => {
+//   console.log('mudo', store.getState());
+// });
+
 render(
   <Provider store={store}>
     <App />

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchBegin } from '../actions/';
 import BookList from './book/BookList';
+import Cart from './cart/';
 import './App.scss';
 
 class App extends Component {
@@ -17,9 +18,10 @@ class App extends Component {
   render() {
     const { items, isFetching } = this.props;
     return (
-      <div>
+      <div className="container">
         <h1>Book Store</h1>
         { !isFetching ? <h2>Loading...</h2> : <BookList books={items} /> }
+        <Cart />
       </div>
     );
   }

@@ -1,4 +1,8 @@
-import { FETCH_SUCCESS, FETCH_FAILURE, ADD_BOOK_CART } from '../constants/ActionTypes';
+import {
+  FETCH_SUCCESS,
+  FETCH_FAILURE,
+  ADD_BOOK_CART,
+} from '../constants/ActionTypes';
 
 export const fetchSuccess = data => ({
   type: FETCH_SUCCESS,
@@ -16,7 +20,6 @@ export const fetchBegin = dispatch => (
     .then(data => dispatch(fetchSuccess(data)))
     .catch(error => dispatch(fetchFailure(error)))
 );
-
 
 export const addBookCart = id => ({
   type: ADD_BOOK_CART,

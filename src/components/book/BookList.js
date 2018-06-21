@@ -39,6 +39,7 @@ BookList.defaultProps = {
   books: [],
   onAddBookCart: null,
 };
+
 BookList.propTypes = {
   books: PropTypes.arrayOf(PropTypes.object),
   onAddBookCart: PropTypes.func,
@@ -51,5 +52,6 @@ const mapDispatchToProps = dispatch => (
     },
   }
 );
+
 
 export default connect(null, mapDispatchToProps)(BookList);
