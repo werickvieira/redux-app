@@ -28,7 +28,7 @@ class App extends Component {
 }
 
 App.defaultProps = {
-  dispatch: '',
+  dispatch: null,
   isFetching: '',
   items: [],
 };
@@ -45,3 +45,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(App);
+
+// https://github.com/reduxjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
