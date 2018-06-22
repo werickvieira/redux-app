@@ -21,8 +21,8 @@ Cart.propTypes = {
   cart: PropTypes.arrayOf(PropTypes.object),
 };
 
-const mapStateCart = state => ({
+const mapStateToProps = state => ({
   cart: state.books.cart,
 });
 
-export default connect(mapStateCart)(Cart);
+export default connect(mapStateToProps)(Cart);
