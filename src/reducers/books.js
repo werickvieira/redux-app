@@ -10,6 +10,25 @@ const initialState = {
   cart: [],
 };
 
+
+function funAddCart(state, payload) {
+  const hasItemInCart = state.cart.filter(({ id }) => id === payload.id);
+  if (hasItemInCart.length === 0) {
+    return {
+      ...state,
+      cart: [...state.cart, {
+        id: payload.id,
+        quantity: 1,
+      }],
+    };
+  }
+
+  // return {
+  //   ...state,
+  //   cart: [...state.cart, ...hasItemInCart[0].quantity += 1],
+  // };
+}
+
 export default function booksReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
@@ -28,10 +47,11 @@ export default function booksReducer(state = initialState, action) {
       };
 
     case ADD_BOOK_CART:
-      return {
-        ...state,
-        cart: [...state.cart, ...state.items.filter(({ id }) => id === action.payload.id)],
-      };
+      return funAddCart(state, payload);
+      // return {
+      //   ...state,
+      //   cart: [...state.cart, ...state.items.filter(({ id }) => id === payload.id)],
+      // };
 
     default:
       return state;
