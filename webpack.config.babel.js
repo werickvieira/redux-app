@@ -56,6 +56,10 @@ const config = {
     ],
   },
 
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.css'],
+  },
+
   plugins: [
     new ExtractTextPlugin('style.css?[hash]'),
     new HtmlWebpackPlugin({
@@ -65,9 +69,6 @@ const config = {
       },
       inject: true,
     }),
-    // new webpack.DefinePlugin({
-    //   URL: JSON.stringify(''),
-    // }),
   ],
   devtool: 'source-map',
   devServer: {
@@ -81,12 +82,10 @@ const config = {
 if (env === 'production') {
   config.plugins.concat([
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: 'production',
-      },
+      'process.env.NODE_ENV': JSON.stringify(env),
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
+      sourceMap: true,
       compress: {
         warnings: false,
       },

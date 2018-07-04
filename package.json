@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
-    "build": "NODE_ENV=production  webpack -p",
+    "build": "NODE_ENV=production  webpack -p --progress",
     "eslint": "eslint src/* --no-cache",
     "test": "jest --no-cache"
   },

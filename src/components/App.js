@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchBegin } from '../actions/';
-import BookList from './book/BookList';
-import Cart from './cart/';
+import BookContainer from '../containers/BookContainer';
+import Cart from './cart/Cart';
 import './App.scss';
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="container">
         <h1>Book Store</h1>
-        { !isFetching ? <h2>Loading...</h2> : <BookList books={items} /> }
+        { !isFetching ? <h2>Loading...</h2> : <BookContainer books={items} /> }
         <Cart />
       </div>
     );

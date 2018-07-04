@@ -10,10 +10,10 @@ const initialState = {
   cart: [],
 };
 
-
 function funAddCart(state, payload) {
-  const hasItemInCart = state.cart.filter(({ id }) => id === payload.id);
-  if (hasItemInCart.length === 0) {
+  console.log('state', state);
+  const bookInCart = state.cart.filter(({ id }) => id === payload.id);
+  if (bookInCart.length === 0) {
     return {
       ...state,
       cart: [...state.cart, {
@@ -21,13 +21,34 @@ function funAddCart(state, payload) {
         quantity: 1,
       }],
     };
+    // return Object.assign({}, state, {
+    //   cart: state.cart.concat({
+    //     id: payload.id,
+    //     quantity: 1,
+    //   }),
+    // });
   }
-
-  // return {
-  //   ...state,
-  //   cart: [...state.cart, ...hasItemInCart[0].quantity += 1],
-  // };
+  // console.log('...state.cart', ...state.cart);
+  // console.log('state.cart.quantity', state.cart[0].quantity);
+  // console.log('_______');
+  return {
+    ...state,
+    cart: [...state.cart, ...state.cart[0].quantity += 1],
+  };
 }
+
+
+// return getAddedIds(state.cart).map(id =>
+//   Object.assign({}, getProduct(state.products, id), {
+//     quantity: getQuantity(state.cart, id)
+//   })
+// )
+
+// return getAddedIds(state.cart).map(id => ({
+//   ...getProduct(state.products, id),
+//   quantity: getQuantity(state.cart, id)
+// }))
+
 
 export default function booksReducer(state = initialState, action) {
   const { type, payload } = action;
