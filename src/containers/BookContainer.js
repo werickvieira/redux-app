@@ -7,19 +7,17 @@ import BookItem from '../components/book/BookItem';
 
 function BookContainer({ books, addBookCart }) {
   return (
-    <div className="container">
-      <BooksList title="">
-        {
-          books.map(book => (
-            <BookItem
-              key={book.id}
-              book={book}
-              onAddToCartClicked={addBookCart}
-            />
-          ))
-        }
-      </BooksList>
-    </div>
+    <BooksList title="">
+      {
+        books.map(book => (
+          <BookItem
+            key={book.id}
+            book={book}
+            onAddToCartClicked={addBookCart}
+          />
+        ))
+      }
+    </BooksList>
   );
 }
 

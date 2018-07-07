@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchBegin } from '../actions/';
 import BookContainer from '../containers/BookContainer';
 import Cart from './cart/Cart';
+import IconCart from './cart/IconCart';
 import './App.scss';
 
 class App extends Component {
@@ -18,8 +19,11 @@ class App extends Component {
   render() {
     const { items, isFetching } = this.props;
     return (
-      <div className="container">
-        <h1>Book Store</h1>
+      <div className="app">
+        <div className="bar container">
+          <h1>Book Store</h1>
+          <IconCart />
+        </div>
         { !isFetching ? <h2>Loading...</h2> : <BookContainer books={items} /> }
         <Cart />
       </div>

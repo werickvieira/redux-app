@@ -4,7 +4,7 @@ import './BooksList.scss';
 
 function BooksList({ title, children }) {
   return (
-    <div className="books">
+    <div className="books container">
       { title ? <h1>{title}</h1> : null }
       { children }
     </div>
