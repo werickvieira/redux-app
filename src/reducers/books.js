@@ -10,45 +10,33 @@ const initialState = {
   cart: [],
 };
 
-function funAddCart(state, payload) {
-  console.log('state', state);
-  const bookInCart = state.cart.filter(({ id }) => id === payload.id);
-  if (bookInCart.length === 0) {
-    return {
-      ...state,
-      cart: [...state.cart, {
-        id: payload.id,
-        quantity: 1,
-      }],
-    };
-    // return Object.assign({}, state, {
-    //   cart: state.cart.concat({
-    //     id: payload.id,
-    //     quantity: 1,
-    //   }),
-    // });
-  }
-  // console.log('...state.cart', ...state.cart);
-  // console.log('state.cart.quantity', state.cart[0].quantity);
-  // console.log('_______');
-  return {
-    ...state,
-    cart: [...state.cart, ...state.cart[0].quantity += 1],
-  };
+function incrementQuantity(books, target) {
+  return books.map((item) => {
+    if (item.id === target) {
+      item.quantity += 1;
+    }
+    return item;
+  });
 }
 
-
-// return getAddedIds(state.cart).map(id =>
-//   Object.assign({}, getProduct(state.products, id), {
-//     quantity: getQuantity(state.cart, id)
-//   })
-// )
-
-// return getAddedIds(state.cart).map(id => ({
-//   ...getProduct(state.products, id),
-//   quantity: getQuantity(state.cart, id)
-// }))
-
+function funAddCart(state, payload) {
+  console.log('newState', state);
+  const existInCart = state.cart.filter(({ id }) => id === payload.id);
+  const cartModel = {
+    id: payload.id,
+    quantity: 1,
+  };
+  if (existInCart.length === 0) {
+    return {
+      ...state,
+      cart: [...state.cart, cartModel],
+    };
+  }
+  return {
+    ...state,
+    cart: incrementQuantity(state.cart, payload.id),
+  };
+}
 
 export default function booksReducer(state = initialState, action) {
   const { type, payload } = action;
@@ -69,11 +57,7 @@ export default function booksReducer(state = initialState, action) {
 
     case ADD_BOOK_CART:
       return funAddCart(state, payload);
-      // return {
-      //   ...state,
-      //   cart: [...state.cart, ...state.items.filter(({ id }) => id === payload.id)],
-      // };
-
+      
     default:
       return state;
   }
