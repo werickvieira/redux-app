@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import './Cart.scss';
 
 function Cart({ cart }) {
-  console.log('cart', cart);
+  console.log('- - - - - - - - - - - - -');
+  console.log('CART COMPONENTE', cart);
+  console.log('- - - - - - - - - - - - -');
   const { length } = cart;
   return (
     <div className="cart" hidden={length === 0}>
