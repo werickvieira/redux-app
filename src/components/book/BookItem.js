@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import formatPrice from '../../util/formatPrice';
 import './BookItem.scss';
 
-function BookItem({ book, onAddToCart }) {
+function BookItem({ book, onAddToCartClicked }) {
   const {
     id,
     name,
@@ -23,14 +23,14 @@ function BookItem({ book, onAddToCart }) {
           <span className="book__detail__price">{formatPrice(price)}</span>
         </div>
       </div>
-      <button className="book__button button" onClick={() => onAddToCart(id)}>Comprar</button>
+      <button className="book__button button" onClick={() => onAddToCartClicked(id)}>Comprar</button>
     </div>
   );
 }
 
 BookItem.defaultProps = {
   book: {},
-  onAddToCart: null,
+  onAddToCartClicked: null,
 };
 
 BookItem.propTypes = {
@@ -41,7 +41,7 @@ BookItem.propTypes = {
     price: PropTypes.number,
     thumb: PropTypes.string,
   }),
-  onAddToCart: PropTypes.func,
+  onAddToCartClicked: PropTypes.func,
 };
 
 export default BookItem;
