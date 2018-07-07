@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BooksList.scss';
 
-function BookList({ title, children }) {
+function BooksList({ title, children }) {
   return (
     <div className="books">
       { title ? <h1>{title}</h1> : null }
@@ -11,14 +11,14 @@ function BookList({ title, children }) {
   );
 }
 
-BookList.defaultProps = {
+BooksList.defaultProps = {
   children: null,
   title: '',
 };
 
-BookList.propTypes = {
+BooksList.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
 };
 
-export default BookList;
+export default BooksList;
