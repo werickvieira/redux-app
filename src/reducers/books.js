@@ -10,9 +10,23 @@ const initialState = {
   cart: [],
 };
 
-function incrementQuantity(books, target) {
-  return books.map((item) => {
-    if (item.id === target) {
+function manageCart(cart, id) {
+  const cartModel = {
+    id,
+    quantity: 1,
+  };
+
+  const existInCart = cart.find(item => item.id === id);
+
+  if (!existInCart) {
+    return [
+      ...cart,
+      cartModel,
+    ];
+  }
+
+  return cart.map((item) => {
+    if (item.id === id) {
       item.quantity += 1;
     }
     return item;
@@ -20,21 +34,9 @@ function incrementQuantity(books, target) {
 }
 
 function funAddCart(state, payload) {
-  console.log('newState', state);
-  const existInCart = state.cart.filter(({ id }) => id === payload.id);
-  const cartModel = {
-    id: payload.id,
-    quantity: 1,
-  };
-  if (existInCart.length === 0) {
-    return {
-      ...state,
-      cart: [...state.cart, cartModel],
-    };
-  }
   return {
     ...state,
-    cart: incrementQuantity(state.cart, payload.id),
+    cart: manageCart(state.cart, payload.id),
   };
 }
 
@@ -57,7 +59,7 @@ export default function booksReducer(state = initialState, action) {
 
     case ADD_BOOK_CART:
       return funAddCart(state, payload);
-      
+
     default:
       return state;
   }
