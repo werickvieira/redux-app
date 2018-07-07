@@ -5,7 +5,7 @@ import { addBookCart } from '../actions/';
 import BooksList from '../components/book/BooksList';
 import BookItem from '../components/book/BookItem';
 
-function BookContainer({ books, onAddBookCart }) {
+function BookContainer({ books, addBookCart }) {
   return (
     <div className="container">
       <BooksList title="">
@@ -14,7 +14,7 @@ function BookContainer({ books, onAddBookCart }) {
             <BookItem
               key={book.id}
               book={book}
-              onAddToCart={onAddBookCart}
+              onAddToCartClicked={addBookCart}
             />
           ))
         }
@@ -25,20 +25,22 @@ function BookContainer({ books, onAddBookCart }) {
 
 BookContainer.defaultProps = {
   books: [],
-  onAddBookCart: null,
+  addBookCart: null,
+  // onAddBookCart: null,
 };
 
 BookContainer.propTypes = {
   books: PropTypes.arrayOf(PropTypes.object),
-  onAddBookCart: PropTypes.func,
+  addBookCart: PropTypes.func,
+  // onAddBookCart: PropTypes.func,
 };
 
-const mapDispatchToProps = dispatch => (
-  {
-    onAddBookCart: (id) => {
-      dispatch(addBookCart(id));
-    },
-  }
-);
+// const mapDispatchToProps = dispatch => (
+//   {
+//     onAddBookCart: (id) => {
+//       dispatch(addBookCart(id));
+//     },
+//   }
+// );
 
-export default connect(null, mapDispatchToProps)(BookContainer);
+export default connect(null, { addBookCart })(BookContainer);
