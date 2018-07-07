@@ -11,7 +11,8 @@
     "no-param-reassign": [2, {"props": false}],
     "comma-dangle": ["error", "always-multiline", {
       "functions": "never"
-    }]
+    }],
+    "no-shadow": 1
   },
   "parserOptions": {
     "ecmaVersion": 2017,
