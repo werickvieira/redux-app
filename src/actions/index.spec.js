@@ -13,12 +13,12 @@ describe('books actions', () => {
     fetchMock.restore();
   });
 
-  const expected = {
-    payload: { data: { books: [] } },
-    type: types.FETCH_SUCCESS,
-  };
-
   it('create FETCH_SUCCESS when fetching books has been done', async () => {
+    const expected = {
+      payload: { data: { books: [] } },
+      type: types.FETCH_SUCCESS,
+    };
+
     fetchMock
       .getOnce(
         'https://api.myjson.com/bins/1f4xm2',
@@ -29,6 +29,17 @@ describe('books actions', () => {
     const store = mockStore({ books: [] });
     const response = await store.dispatch(actions.fetchBegin);
     expect(response).toEqual(expected);
+  });
+
+  it('should create an action ADD_BOOK_CART', () => {
+    const payload = {
+      id: 1,
+    };
+    const expected = {
+      type: types.ADD_BOOK_CART,
+      payload,
+    };
+    expect(actions.addBookCart(1)).toEqual(expected);
   });
 });
 
