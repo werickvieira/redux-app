@@ -13,7 +13,7 @@ describe('books actions', () => {
     fetchMock.restore();
   });
 
-  it('create FETCH_SUCCESS when fetching books has been done', async () => {
+  it('should create FETCH_SUCCESS when fetching books has been done', async () => {
     const expected = {
       payload: { data: { books: [] } },
       type: types.FETCH_SUCCESS,
@@ -33,13 +33,23 @@ describe('books actions', () => {
 
   it('should create an action ADD_BOOK_CART', () => {
     const payload = {
-      id: 1,
+      id: 15,
     };
     const expected = {
       type: types.ADD_BOOK_CART,
       payload,
     };
-    expect(actions.addBookCart(1)).toEqual(expected);
+    expect(actions.addBookCart(15)).toEqual(expected);
+  });
+
+  it('should create an action FETCH_FAILURE', () => {
+    const payload = {
+      error: 'Message Error',
+    };
+    const expected = {
+      type: types.FETCH_FAILURE,
+      payload,
+    };
+    expect(actions.fetchFailure('Message Error')).toEqual(expected);
   });
 });
-
